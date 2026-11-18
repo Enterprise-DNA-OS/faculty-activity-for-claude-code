@@ -1,0 +1,35 @@
+{
+  "departments": {
+    "code": "Department Code",
+    "name": "Department Name"
+  },
+  "faculty": {
+    "code": "Staff ID",
+    "name": "Full Name",
+    "department": "Department Code",
+    "role": "Role",
+    "purpose": "Purpose",
+    "review_on": "Review On",
+    "review_evidence": "Review Evidence",
+    "notification_basis": "Notice Basis",
+    "notification_evidence": "Notice Evidence"
+  },
+  "cycles": {
+    "code": "Cycle Code",
+    "name": "Cycle Name",
+    "starts_on": "Start",
+    "ends_on": "End",
+    "due_on": "Due"
+  },
+  "activities": {
+    "code": "Record ID",
+    "faculty": "Staff ID",
+    "cycle": "Cycle Code",
+    "kind": "Category",
+    "title": "Title",
+    "occurred_on": "Date",
+    "hours": "Hours",
+    "reference": "Reference",
+    "evidence": "Evidence"
+  }
+}

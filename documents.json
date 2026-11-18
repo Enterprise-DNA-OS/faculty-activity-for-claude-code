@@ -1,11 +1,54 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "academic-cv",
+    "title": "Draft academic activity CV",
+    "for_each": "SELECT id,name FROM faculty ORDER BY code",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Academic",
+        "layout": "record",
+        "sql": "SELECT f.code,f.name,f.role,d.name department FROM faculty f JOIN departments d ON d.id=f.department_id WHERE f.id=$1"
+      },
+      {
+        "title": "Verified teaching, research and service",
+        "sql": "SELECT kind,title,occurred_on,reference,evidence FROM activities WHERE faculty_id=$1 AND state='verified' ORDER BY kind,occurred_on DESC",
+        "note": "Private draft from verified activity records. Review recipients, completeness and permission before sharing."
+      }
+    ]
+  },
+  {
+    "name": "annual-return",
+    "title": "Annual activity return",
+    "for_each": "SELECT r.id,f.code || '-' || c.code name FROM annual_returns r JOIN faculty f ON f.id=r.faculty_id JOIN cycles c ON c.id=r.cycle_id ORDER BY name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Return record",
+        "layout": "record",
+        "sql": "SELECT faculty,cycle,state,due_on,submitted_at,approved_by,no_activity_reason FROM return_register WHERE id=$1",
+        "note": "Draft returns show current activity. Submitted and approved returns show the frozen submission."
+      },
+      {
+        "title": "Activity record",
+        "sql": "SELECT a.kind,a.title,a.occurred_on,a.reference,a.evidence FROM activities a JOIN annual_returns r ON r.faculty_id=a.faculty_id AND r.cycle_id=a.cycle_id WHERE r.id=$1 AND r.state='draft' AND a.state<>'withdrawn' UNION ALL SELECT x.kind,x.title,x.occurred_on::date,x.reference,x.evidence FROM annual_returns r CROSS JOIN LATERAL jsonb_to_recordset(r.snapshot->'activities') AS x(kind text,title text,occurred_on text,reference text,evidence text) WHERE r.id=$1 AND r.state<>'draft' ORDER BY kind,occurred_on"
+      }
+    ]
+  },
+  {
+    "name": "department-brief",
+    "title": "Department activity brief",
+    "for_each": "SELECT id,name FROM departments ORDER BY code",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Annual returns",
+        "sql": "SELECT f.code,f.name,c.code cycle,r.state,c.due_on FROM faculty f JOIN annual_returns r ON r.faculty_id=f.id JOIN cycles c ON c.id=r.cycle_id WHERE f.department_id=$1 ORDER BY f.code,c.code"
+      },
+      {
+        "title": "Evidence to review",
+        "sql": "SELECT a.code,f.name,a.kind,a.title FROM activities a JOIN faculty f ON f.id=a.faculty_id WHERE f.department_id=$1 AND a.state='draft' ORDER BY a.code"
+      }
     ]
   }
 ]

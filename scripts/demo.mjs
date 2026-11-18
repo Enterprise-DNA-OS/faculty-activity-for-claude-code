@@ -1,0 +1,6 @@
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';
+import {getDb,REPO_ROOT} from './lib/db.mjs';import {migrate} from './migrate.mjs';import {seed} from './seed.mjs';import {execute,human} from './faculty.mjs';
+const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'faculty-demo-'));process.env.DATABASE_URL='';process.env.DATA_DIR=path.join(tmp,'db');process.env.OUTPUT_DIR=tmp;
+const db=await getDb();try{await migrate(db);await seed(db);const screens=[];for(const [c,title,ask] of [['returns-due','Annual returns due','Whose annual activity returns are overdue?'],['evidence-gaps','Evidence to check','Which activity records still need supporting evidence checked?'],['department-review','Department review','Where are annual returns still waiting to be completed?']]){const output=human(await execute(db,[c]));console.log(c+'\n'+output);screens.push({title,ask,command:'npm run faculty -- '+c,output});}fs.writeFileSync(path.join(tmp,'screens.json'),JSON.stringify(screens,null,2));}finally{await db.close();}
+for(const f of ['view.mjs','docs.mjs']){const r=spawnSync(process.execPath,[path.join(REPO_ROOT,'scripts',f)],{env:process.env,encoding:'utf8'});if(r.status!==0)throw Error(r.stderr);console.log(r.stdout.trim());}
+console.log('Demo records and reports: '+tmp);

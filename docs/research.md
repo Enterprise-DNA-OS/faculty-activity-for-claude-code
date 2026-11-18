@@ -1,0 +1,15 @@
+# Selection evidence and scope
+
+Checked 18 November 2026. New family: faculty-activity. This is teaching, research and service reporting for a coordinator. It is distinct from the existing accreditation, curriculum, student placement and employee performance families. No recruitment functionality is included.
+
+Scores, each out of five: annual bill 4; data-shaped 5; buyer fit 1; search demand 2; one-session buildability 5; import path 4. Total 21/30. No Interfolio usage or bill was found in available customer-brain or CRM snapshots; no live CRM read. Do not imply that an Enterprise DNA customer pays this invoice. Search demand is a qualitative result-page assessment, not measured volume.
+
+- [Supplier G-Cloud May 2024 pricing schedule](https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/711237/585850858708934-pricing-document-2024-04-17-0852.pdf), page 3: FAR recurring first band GBP 64,935 excluding VAT, 1-999 academic staff. Historical UK supplier schedule, not an NZ/AU quote. It lists implementation and training without additional fees. Do not invent setup charges for the incumbent.
+- [Public university order](https://www.pvamu.edu/pdsv/wp-content/uploads/sites/88/C26-05-23226.pdf): US$59,124.73 covers FAR, Review Promotion Tenure and advisory service for 30 December 2025 to 29 December 2026. This is a bundled institutional contract, not a standalone FAR rate. It confirms substantial spend but is not used as public page pricing.
+- [Current supplier product page](https://www.elsevier.com/products/interfolio/activity-reporting): teaching, research and service records, reporting, CVs, evaluations and separate data-service and profile capabilities. No subscription figure is published there. Our page uses no currency figures.
+- [Penn FAR implementation FAQ](https://faculty.upenn.edu/wp-content/uploads/FAR-Implementation-Frequently-Asked-Questions-FAQs.pdf): its reporting section documents a bulk data report exporting fields and records as CSV. It also shows that institution-specific source systems and sections matter. No universal header layout is claimed here.
+- [Watermark migration guide](https://support.watermarkinsights.com/hc/en-us/articles/29256903755675-Interfolio-Database-Migration): corroborates FAR backup CSV and the need to map data. Watermark Faculty Success is a real rival, with [vendor-described faculty activity scope](https://www.watermarkinsights.com/solutions/faculty-success/).
+
+Watermark Faculty Success scored 1/5/1/2/5/4 = 18 without a verified standalone annual bill. Firmex scored 1/2/2/3/2/4 = 14 and was rejected because secure external document access is central to its value. Neither is queued by this run.
+
+The open-source implementation and its fictional outputs prove what this base does. No statement asserts that Interfolio cannot answer the ten questions: its custom reporting is documented. Evidence review is a local human workflow, not a claim about an incumbent feature being locked behind a particular tier.

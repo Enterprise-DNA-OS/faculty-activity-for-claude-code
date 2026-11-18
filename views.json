@@ -1,13 +1,37 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Faculty Activity for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Annual return desk",
+    "subtitle": "Private coordinator review",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Department completion",
+        "sql": "SELECT * FROM department_summary ORDER BY department,cycle"
+      },
+      {
+        "title": "Overdue draft returns",
+        "sql": "SELECT faculty,cycle,due_on,overdue_days,unverified FROM return_register WHERE state='draft' AND due_on<current_date ORDER BY due_on,faculty"
+      }
+    ]
+  },
+  {
+    "name": "evidence",
+    "title": "Activity evidence review",
+    "sections": [
+      {
+        "title": "Needs verification",
+        "sql": "SELECT code,faculty,kind,title,evidence FROM activity_register WHERE state='draft' ORDER BY code"
+      }
+    ]
+  },
+  {
+    "name": "privacy",
+    "title": "Record review checks",
+    "sections": [
+      {
+        "title": "Purpose, notice, accuracy and retention",
+        "sql": "SELECT record_code,rule,issue FROM compliance_findings ORDER BY rule,record_code",
+        "note": "These checks support a human review. A clean result is not a compliance certificate."
       }
     ]
   }

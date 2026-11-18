@@ -1,115 +1,118 @@
-<h1 align="center">Faculty Activity for Claude Code</h1>
+# Faculty Activity for Claude Code
 
-<p align="center">
-  <strong>The open-source faculty activity record that is just a database and Claude Code.</strong>
-</p>
+Keep teaching, research and service records together. Review evidence, close annual activity returns and produce private CV drafts from a database you own. This is a working base for the activity-record part of Interfolio Faculty Activity Reporting, formerly Faculty180.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
+## Three ways to use it
 
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your Interfolio Faculty Activity Reporting data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=interfolio-far">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/interfolio-far?utm_source=github&utm_medium=readme&utm_campaign=interfolio-far">How it works</a></td>
-  </tr>
-</table>
+**Do it yourself.** Free, open source under MIT. Open this folder in Claude Code, Codex, OpenCode or Cursor and use the commands below.
 
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-interfolio-far">Instead of Interfolio Faculty Activity Reporting</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
+**We customise it.** Enterprise DNA maps your Interfolio records, builds your reporting categories and prepares your documents. Your version can include a web front end or a different stack. One setup fee, then a retainer.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
+**We run it for you.** Omni by Enterprise DNA installs, connects and operates your version. One setup fee, then a monthly retainer. [Book a 30-minute call](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=interfolio-far&utm_medium=github).
 
----
-
-## What is this
-
-Faculty Activity for Claude Code does the job you pay Interfolio Faculty Activity Reporting for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the Interfolio Faculty Activity Reporting dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays Interfolio Faculty Activity Reporting per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=interfolio-far).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
+The supplier’s [May 2024 UK G-Cloud pricing schedule](https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/711237/585850858708934-pricing-document-2024-04-17-0852.pdf) lists Faculty Activity Reporting at GBP 64,935 annually for its first academic-staff band, excluding VAT. That is a historical UK schedule, not a current NZ or Australian invoice or quote. The current product page gives no price figure. See [research and scope](docs/research.md).
 
 ## Quick start
 
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
+Node 22 or newer on Windows, Linux or macOS.
 
 ```bash
-git clone https://github.com/Enterprise-DNA-OS/faculty-activity-for-claude-code.git
-cd faculty-activity-for-claude-code
 npm install
+npm test
 npm run demo
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+The demo creates a temporary fictional database, prints three actual command runs and renders reports. It ignores DATABASE_URL. For a persistent fictional workspace, run npm run migrate, npm run seed, then npm run faculty -- weekly-review. For real records, migrate only. DATABASE_URL selects PostgreSQL; otherwise DATA_DIR selects embedded PGlite. Remote TLS certificates are verified.
 
-### Use it with your own Postgres or Supabase
+## What ships
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+36 slash commands, three printable dashboards and three document types: academic CV drafts, annual activity returns and department briefs. Edit brand.json for your institution’s name, colours and logo. [CLI reference](docs/cli.md), [privacy and policy checks](docs/compliance.md), [screen boundaries](docs/why-no-front-end.md).
 
-## The commands
+The database holds departments, academics, reporting cycles, activities, annual returns, notes, import batches and operator actions. Evidence is a reference, not a copied file. Every included activity must be verified before submission. An empty return requires a declaration. Submission records a frozen copy. Correction reopens it with a reason, and the earlier copy stays in the audit trail. Failed operations and imports roll back completely.
 
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
+## Bring your records across
 
-| Command | What it does |
+```bash
+npm run faculty -- import interfolio ./imports/cutover --mapping=./imports/field-map.json --batch=cutover --actor="Coordinator" --dry-run
+```
+
+Repeat without --dry-run after comparing the records and counts. FAR supports bulk CSV reporting, but institutions configure their own sections and fields. The [switch guide](docs/replace-interfolio-far.md) explains splitting selected reports, field mapping, date and category normalization, and the review needed before use. The examples are synthetic mapping fixtures, not a claimed universal vendor export. Importing is one command after that preparation.
+
+## Ten questions to ask today
+
+Run npm run faculty -- insights. These are implemented joins over your records. Interfolio also supports custom reports; no claim is made that its reporting cannot answer them. Recorded activities are not measures of staff performance.
+
+1. Which overdue returns also have missing activity evidence?
+2. Which research references appear under more than one academic?
+3. Which departments have teaching records still awaiting verification?
+4. Which returns contain teaching but no recorded research?
+5. Who has an open return with no recorded activities?
+6. Which academics with overdue returns also need a retention review?
+7. Which draft returns have verified activities and no privacy findings?
+8. How much recorded service time sits in each department and cycle?
+9. Which submitted returns are waiting for coordinator approval?
+10. Which departments have the most unfinished annual returns?
+
+## Your first hour: ten things to ask for
+
+1. Show the annual returns past their due date.
+2. Find research outputs with missing evidence.
+3. Show teaching records awaiting verification.
+4. Read one academic’s full activity history.
+5. Record a service contribution with its evidence reference.
+6. Verify an activity after checking its source.
+7. Prepare an annual return and inspect its frozen copy.
+8. Draft reminders without sending them.
+9. Put our name on the private department brief.
+10. Add our reporting field with /customise and a report with /new-view.
+
+## Commands
+
+| Command | Job |
 |---|---|
-| `/...` | ... |
+| /departments | Read departments |
+| /faculty | Read academic staff and review dates |
+| /cycles | Read reporting periods |
+| /activities | Read the complete activity register |
+| /teaching | Review teaching activities |
+| /research | Review research outputs |
+| /service | Review service contributions |
+| /annual-returns | Review annual return status |
+| /returns-due | Find draft returns past their deadline |
+| /evidence-gaps | Find missing or unverified evidence |
+| /department-review | Read completion by department |
+| /compliance | Check privacy records and local deadlines |
+| /attention | Review overdue returns and evidence gaps |
+| /insights | Answer ten joined activity questions |
+| /weekly-review | Combine return deadlines, evidence and compliance |
+| /history | Read one academic and their activity, return and note history |
+| /audit | Read the operator trail |
+| /imports | Reconcile imported batches |
+| /add-department | Add CODE NAME |
+| /add-faculty | Add CODE NAME DEPARTMENT |
+| /add-cycle | Add CODE NAME and reporting dates |
+| /open-return | Open FACULTY CYCLE annual return |
+| /add-activity | Add CODE FACULTY CYCLE TITLE |
+| /update-activity | Revise ACTIVITY and clear verification |
+| /verify-activity | Verify ACTIVITY against its recorded evidence |
+| /withdraw-activity | Withdraw ACTIVITY with a reason |
+| /submit-return | Submit FACULTY CYCLE with a frozen copy |
+| /approve-return | Approve FACULTY CYCLE after human review |
+| /reopen-return | Reopen FACULTY CYCLE for correction |
+| /review-privacy | Review FACULTY purpose, retention and notice |
+| /log | Add an operational note for FACULTY |
+| /import | Import interfolio DIRECTORY mapped CSV exports |
+| /export | Export all records as structured JSON |
+| /draft-reminders | Draft overdue-return reminders without sending |
+| /customise | Add a field or change a reporting rule |
+| /new-view | Add a private read-only report |
 
-## Instead of Interfolio Faculty Activity Reporting
+## Operating scope
 
-<!-- TODO(author): how to bring data across from Interfolio Faculty Activity Reporting; link docs/replace-interfolio-far.md -->
+This is a trusted coordinator’s local record, not an authenticated staff portal. Operator labels are not identities. Row security is enabled and public grants are removed; hosted authentication and least-privilege roles need configuration for shared use. Protect and review exports and reports before sharing them. Privacy checks support review and do not certify compliance.
 
-## Architecture
+The base does not harvest scholarly databases, host public staff profiles, run recruitment, decide promotion or tenure, score staff performance, send messages or store attachment binaries. Those source systems and decisions remain with the institution. Keep existing services until any agreed replacement connections have been tested.
 
-```
-faculty-activity-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
-```
+Tests exercise annual-return transitions, verification invalidation, frozen copies, import replay and rollback, evidence checks, exports, drafts and escaped HTML. The workflow checks Windows, Linux and PostgreSQL 16; inspect the workflow run for execution evidence.
 
-## Built for coding agents
-
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
-
-## Contributing
-
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
-
-## Want it installed and run for you?
-
-Enterprise DNA installs Faculty Activity for Claude Code for your business, migrates your Interfolio Faculty Activity Reporting data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
-
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=interfolio-far)
-- Read more: [enterprisedna.co/omni/instead-of/interfolio-far](https://enterprisedna.co/omni/instead-of/interfolio-far?utm_source=github&utm_medium=readme&utm_campaign=interfolio-far)
-
-## License
-
-MIT. Copyright (c) 2026 Enterprise DNA.
+MIT. Copyright (c) 2026 Enterprise DNA. Not affiliated with Elsevier or Interfolio.
