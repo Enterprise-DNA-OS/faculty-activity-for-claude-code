@@ -1,3 +1,7 @@
+---
+description: "Review annual return status"
+---
+
 # Review annual return status
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

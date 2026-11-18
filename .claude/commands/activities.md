@@ -1,3 +1,7 @@
+---
+description: "Read the complete activity register"
+---
+
 # Read the complete activity register
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

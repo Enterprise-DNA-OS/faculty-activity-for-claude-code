@@ -1,3 +1,7 @@
+---
+description: "Answer ten joined activity questions"
+---
+
 # Answer ten joined activity questions
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

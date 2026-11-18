@@ -1,3 +1,7 @@
+---
+description: "Reconcile imported batches"
+---
+
 # Reconcile imported batches
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

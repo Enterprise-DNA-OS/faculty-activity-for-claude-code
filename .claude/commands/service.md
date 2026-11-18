@@ -1,3 +1,7 @@
+---
+description: "Review service contributions"
+---
+
 # Review service contributions
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

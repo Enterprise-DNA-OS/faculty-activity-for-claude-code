@@ -1,3 +1,7 @@
+---
+description: "Read departments"
+---
+
 # Read departments
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

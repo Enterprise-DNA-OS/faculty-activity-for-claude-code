@@ -1,3 +1,7 @@
+---
+description: "Read one academic and their activity, return and note history"
+---
+
 # Read one academic and their activity, return and note history
 
 Read CLAUDE.md and docs/cli.md. Resolve the 1 required arguments from the user’s request. Do not guess missing identifiers.

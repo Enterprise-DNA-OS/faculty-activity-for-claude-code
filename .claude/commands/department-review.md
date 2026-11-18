@@ -1,3 +1,7 @@
+---
+description: "Read completion by department"
+---
+
 # Read completion by department
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

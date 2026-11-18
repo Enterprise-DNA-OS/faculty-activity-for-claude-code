@@ -1,3 +1,7 @@
+---
+description: "Approve FACULTY CYCLE after human review"
+---
+
 # Approve FACULTY CYCLE after human review
 
 Read CLAUDE.md and docs/cli.md. Resolve the 2 required arguments from the user’s request. Do not guess missing identifiers.

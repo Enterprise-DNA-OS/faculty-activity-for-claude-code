@@ -1,3 +1,7 @@
+---
+description: "Check privacy records and local deadlines"
+---
+
 # Check privacy records and local deadlines
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

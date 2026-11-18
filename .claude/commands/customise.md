@@ -1,3 +1,7 @@
+---
+description: "Make the activity record yours"
+---
+
 # Make the activity record yours
 
 Read CLAUDE.md, docs/cli.md and the relevant migration. Establish the field, category or local rule requested. Export the database first. Add a numbered migration, backfill existing records deliberately, update CLI validation, views, documents and import mapping as needed. Preserve submitted snapshots and the audit trail. Apply with npm run migrate. Run npm test and npm run demo, and show one real example of the requested change. Record the change in docs/customisations.md. Never change legal-source wording to match an invented obligation. No front end, external write or publication.

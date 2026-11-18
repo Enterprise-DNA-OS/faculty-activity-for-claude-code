@@ -1,3 +1,7 @@
+---
+description: "Add CODE NAME DEPARTMENT"
+---
+
 # Add CODE NAME DEPARTMENT
 
 Read CLAUDE.md and docs/cli.md. Resolve the 3 required arguments from the user’s request. Do not guess missing identifiers.

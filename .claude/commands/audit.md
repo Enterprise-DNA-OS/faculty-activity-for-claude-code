@@ -1,3 +1,7 @@
+---
+description: "Read the operator trail"
+---
+
 # Read the operator trail
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

@@ -1,3 +1,7 @@
+---
+description: "Add CODE NAME"
+---
+
 # Add CODE NAME
 
 Read CLAUDE.md and docs/cli.md. Resolve the 2 required arguments from the user’s request. Do not guess missing identifiers.

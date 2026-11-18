@@ -1,3 +1,7 @@
+---
+description: "Revise ACTIVITY and clear verification"
+---
+
 # Revise ACTIVITY and clear verification
 
 Read CLAUDE.md and docs/cli.md. Resolve the 1 required arguments from the user’s request. Do not guess missing identifiers.

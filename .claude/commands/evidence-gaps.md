@@ -1,3 +1,7 @@
+---
+description: "Find missing or unverified evidence"
+---
+
 # Find missing or unverified evidence
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

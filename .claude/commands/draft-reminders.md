@@ -1,3 +1,7 @@
+---
+description: "Draft overdue-return reminders without sending"
+---
+
 # Draft overdue-return reminders without sending
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

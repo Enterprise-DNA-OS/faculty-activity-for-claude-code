@@ -1,3 +1,7 @@
+---
+description: "Combine return deadlines, evidence and compliance"
+---
+
 # Combine return deadlines, evidence and compliance
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

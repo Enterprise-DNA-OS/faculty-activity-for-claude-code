@@ -1,3 +1,7 @@
+---
+description: "Review research outputs"
+---
+
 # Review research outputs
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

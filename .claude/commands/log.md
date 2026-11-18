@@ -1,3 +1,7 @@
+---
+description: "Add an operational note for FACULTY"
+---
+
 # Add an operational note for FACULTY
 
 Read CLAUDE.md and docs/cli.md. Resolve the 1 required arguments from the user’s request. Do not guess missing identifiers.

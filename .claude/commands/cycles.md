@@ -1,3 +1,7 @@
+---
+description: "Read reporting periods"
+---
+
 # Read reporting periods
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

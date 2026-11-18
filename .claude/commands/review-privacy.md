@@ -1,3 +1,7 @@
+---
+description: "Review FACULTY purpose, retention and notice"
+---
+
 # Review FACULTY purpose, retention and notice
 
 Read CLAUDE.md and docs/cli.md. Resolve the 1 required arguments from the user’s request. Do not guess missing identifiers.

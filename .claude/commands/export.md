@@ -1,3 +1,7 @@
+---
+description: "Export all records as structured JSON"
+---
+
 # Export all records as structured JSON
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

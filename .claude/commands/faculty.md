@@ -1,3 +1,7 @@
+---
+description: "Read academic staff and review dates"
+---
+
 # Read academic staff and review dates
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

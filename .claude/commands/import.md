@@ -1,3 +1,7 @@
+---
+description: "Import interfolio DIRECTORY mapped CSV exports"
+---
+
 # Import interfolio DIRECTORY mapped CSV exports
 
 Read CLAUDE.md and docs/cli.md. Resolve the 2 required arguments from the user’s request. Do not guess missing identifiers.

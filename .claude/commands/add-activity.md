@@ -1,3 +1,7 @@
+---
+description: "Add CODE FACULTY CYCLE TITLE"
+---
+
 # Add CODE FACULTY CYCLE TITLE
 
 Read CLAUDE.md and docs/cli.md. Resolve the 4 required arguments from the user’s request. Do not guess missing identifiers.

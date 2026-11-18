@@ -1,3 +1,7 @@
+---
+description: "Review overdue returns and evidence gaps"
+---
+
 # Review overdue returns and evidence gaps
 
 Read CLAUDE.md and docs/cli.md. Read the current database.

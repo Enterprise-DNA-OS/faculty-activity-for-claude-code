@@ -1,3 +1,7 @@
+---
+description: "Review teaching activities"
+---
+
 # Review teaching activities
 
 Read CLAUDE.md and docs/cli.md. Read the current database.
